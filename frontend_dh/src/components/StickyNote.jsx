@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import html2canvas from 'html2canvas';
-import Navbar from './Navbar'; // Adjust the import path as necessary
-
 const StickyNote = () => {
   const [content, setContent] = useState('');
   const [summary, setSummary] = useState('');
@@ -114,8 +112,7 @@ const StickyNote = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100">
-      <Navbar />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4">
         <h1 className="text-5xl font-extrabold text-center text-indigo-800 mb-12 tracking-tight">
         </h1>
         <div className="flex flex-col lg:flex-row gap-8">

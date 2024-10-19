@@ -6,6 +6,8 @@ import Navbar from './components/Navbar'; // Import the Navbar component
 import FlashCards from './components/FlashCards';
 import StickyNote from './components/StickyNote';
 import HomePage from './components/HomePage';
+import Quiz from './components/Quiz';
+import Course from './components/Course';
 
 const App = () => {
   const location = useLocation(); // Get the current location
@@ -18,10 +20,14 @@ const App = () => {
       <Routes>
         <Route path="/canvas" element={<CanvasBoard />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Course />} />
+
 
         <Route path="/login" element={<Login />} />
         <Route path="/cards" element={<FlashCards/>} />
         <Route path="/sticky" element={<StickyNote/>} />
+        <Route path="/quiz" element={<Quiz/>} />
+
 
 
       </Routes>
