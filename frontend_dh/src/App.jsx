@@ -1,12 +1,32 @@
-import React from 'react'
-import CanvasBoard from './components/CanvasBoard'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import CanvasBoard from './components/CanvasBoard';
+import Login from './components/Login';
+import Navbar from './components/Navbar'; // Import the Navbar component
+import FlashCards from './components/FlashCards';
 
 const App = () => {
+  const location = useLocation(); // Get the current location
+
   return (
     <>
-    <CanvasBoard/>
-    </>
-  )
-}
+      {/* Render Navbar only if not on the login page */}
+      {location.pathname !== '/login' && <Navbar />}
 
-export default App
+      <Routes>
+        <Route path="/" element={<CanvasBoard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cards" element={<FlashCards/>} />
+
+      </Routes>
+    </>
+  );
+};
+
+const MainApp = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default MainApp;
