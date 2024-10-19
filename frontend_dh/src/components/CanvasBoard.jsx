@@ -97,15 +97,15 @@ const CanvasBoard = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-100 min-h-screen flex flex-col items-center justify-center">
-      <div className="bg-white p-6 shadow-lg rounded-lg w-full max-w-4xl border border-gray-300">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Canvas Drawing Board</h1>
+    <div className="p-4 bg-gray-100  flex flex-col items-center justify-center">
+      <div className="bg-white p-2  shadow-lg rounded-lg  border border-gray-300">
+        {/* <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Canvas Drawing Board</h1>  */}
         
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={handlePrevious}
             disabled={currentQuestionIndex === 0}
-            className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
+            className="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 disabled:bg-purple-300 disabled:cursor-not-allowed flex items-center"
           >
             <FaChevronLeft className="mr-2" /> Previous
           </button>
@@ -113,16 +113,16 @@ const CanvasBoard = () => {
           <button
             onClick={handleNext}
             disabled={currentQuestionIndex === questions.length - 1}
-            className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed flex items-center"
+            className="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 disabled:bg-purple-300 disabled:cursor-not-allowed flex items-center"
           >
             Next <FaChevronRight className="ml-2" />
           </button>
         </div>
 
-        <div className="border-4 border-gray-800 rounded-lg overflow-hidden shadow-inner">
+        <div className="border-4 border-purple-600 rounded-lg overflow-hidden shadow-inner">
           <canvas
             ref={canvasRef}
-            className="w-full h-[400px] bg-white cursor-crosshair"
+            className="w-[80vw] h-[70vh] bg-white cursor-crosshair"
             onMouseDown={startDrawing}
             onMouseMove={draw}
             onMouseUp={stopDrawing}
@@ -157,7 +157,7 @@ const CanvasBoard = () => {
 
             <button
               onClick={toggleEraser}
-              className={`px-4 py-2 ${isEraser ? 'bg-gray-600' : 'bg-black'} text-white rounded-full hover:bg-gray-800 flex items-center`}
+              className={`px-4 py-2 ${isEraser ? 'bg-purple-400' : 'bg-purple-600'} text-white rounded-full hover:bg-purple-700 flex items-center`}
             >
               {isEraser ? <FaEraser className="mr-2" /> : <FaPencilAlt className="mr-2" />}
               {isEraser ? 'Eraser' : 'Brush'}

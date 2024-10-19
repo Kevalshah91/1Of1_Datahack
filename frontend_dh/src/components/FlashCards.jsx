@@ -51,7 +51,7 @@ const FlashCards = () => {
         .flip-card {
           background-color: transparent;
           width: 100%;
-          height: 250px;
+          height: 350px; /* Increased height */
           perspective: 1000px;
         }
         .flip-card-inner {
@@ -85,7 +85,7 @@ const FlashCards = () => {
           transform: rotateY(180deg);
         }
       `}</style>
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-lg"> {/* Increased max width */}
         <div className="flex justify-between mb-4">
           <div className="text-orange-500">{stillLearning} Still learning</div>
           <div className="text-green-500">{knownCards} Know</div>
