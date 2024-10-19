@@ -8,6 +8,8 @@ import StickyNote from './components/StickyNote';
 import HomePage from './components/HomePage';
 import Quiz from './components/Quiz';
 import Course from './components/Course';
+import Video from './components/Video';
+import Dashboard from './components/Dashboard';
 
 const App = () => {
   const location = useLocation(); // Get the current location
@@ -27,6 +29,10 @@ const App = () => {
         <Route path="/cards" element={<FlashCards/>} />
         <Route path="/sticky" element={<StickyNote/>} />
         <Route path="/quiz" element={<Quiz/>} />
+        <Route path="/video" element={<Video/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+
+
 
 
 
