@@ -20,7 +20,7 @@ const App = () => {
       <Routes>
         <Route path="/canvas" element={<CanvasBoard />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/" element={<Course />} />
+        <Route path="/course" element={<Course />} />
 
 
         <Route path="/login" element={<Login />} />

@@ -40,7 +40,7 @@ const Course = () => {
 
   const generateSectionContent = async (sectionTitle) => {
     setIsLoading(true);
-    const prompt = `Provide detailed content for the following section of a ${topic} course: "${sectionTitle}". Include explanations, examples, and key points.`;
+    const prompt = `Provide detailed content for the following section of a ${topic} course: "${sectionTitle}". Include explanations, examples, and key points. Use bullet points for main ideas and create subsections where appropriate.`;
 
     try {
       const result = await model.generateContent(prompt);
@@ -56,26 +56,20 @@ const Course = () => {
   };
 
   const parseContent = (text) => {
-    // Remove asterisks and other unnecessary formatting
     let cleanedText = text.replace(/\*\*/g, '').trim();
-
-    // Split the content into lines
     const lines = cleanedText.split('\n');
 
-    // Process lines to determine significance
     const structuredContent = lines.map(line => {
-      // Example: Determine if the line is a heading or paragraph
       if (line.match(/^#\s/)) {
-        return `<h3>${line.replace(/^#\s/, '')}</h3>`; // Treat as a subheading
-      } else if (line.match(/^\*\s/)) {
-        return `<li>${line.replace(/^\*\s/, '')}</li>`; // Treat as a list item
+        return `<p class="text-lg font-bold text-indigo-700 mb-3 mt-6">${line.replace(/^#\s/, '')}</p>`;
+      } else if (line.match(/^\s*[-•]\s/)) {
+        return `<li class="mb-2 font-bold">${line.replace(/^\s*[-•]\s/, '')}</li>`;
       } else {
-        return `<p>${line}</p>`; // Treat as a paragraph
+        return `<p class="mb-4 leading-relaxed italic">${line}</p>`;
       }
     });
 
-    // Join structured content into a single HTML string
-    return structuredContent.join('');
+    return `<ul class="list-disc pl-5 mb-4">${structuredContent.join('')}</ul>`;
   };
 
   const handleNextSection = () => {
@@ -91,32 +85,32 @@ const Course = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-gradient-to-br from-indigo-100 to-purple-100">
       <div className="w-1/4 bg-white p-6 overflow-y-auto shadow-lg">
-        <h1 className="text-3xl font-bold mb-6 text-indigo-600">Course Generator</h1>
+        <h1 className="text-3xl font-bold mb-6 text-indigo-600 border-b pb-2">Course Generator</h1>
         <input
           type="text"
           value={topic}
           onChange={(e) => setTopic(e.target.value)}
           placeholder="Enter course topic"
-          className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
+          className="w-full p-3 border border-indigo-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
         />
         <button
           onClick={generateCourseOutline}
           disabled={isLoading}
-          className="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200 ease-in-out"
+          className="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200 ease-in-out disabled:opacity-50"
         >
           {isLoading ? 'Generating...' : 'Generate Course'}
         </button>
         {courseSections.length > 0 && (
           <div className="mt-6">
-            <h2 className="text-xl font-semibold mb-4 text-gray-700">Sections</h2>
+            <h2 className="text-xl font-semibold mb-4 text-indigo-700">Sections</h2>
             <ul className="space-y-2">
               {courseSections.map((section, index) => (
                 <li
                   key={index}
                   className={`cursor-pointer p-2 rounded transition duration-200 ease-in-out ${
-                    currentSection === index ? 'bg-indigo-100 text-indigo-800' : 'hover:bg-gray-100'
+                    currentSection === index ? 'bg-indigo-100 text-indigo-800 font-semibold' : 'hover:bg-indigo-50'
                   }`}
                   onClick={() => setCurrentSection(index)}
                 >
@@ -130,32 +124,34 @@ const Course = () => {
 
       <div className="flex-1 p-6 overflow-y-auto">
         {courseSections.length > 0 && (
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold mb-4 text-indigo-800">
+          <div className="bg-white rounded-lg shadow-lg p-8">
+            <h2 className="text-3xl font-bold mb-6 text-indigo-800 border-b pb-2">
               {courseSections[currentSection].replace(/^\d+\.\s*/, '')}
             </h2>
             {isLoading ? (
-              <p>Loading section content...</p>
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-500"></div>
+              </div>
             ) : (
               <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: currentSectionContent }} />
             )}
-            <div className="mt-6 flex justify-between items-center">
+            <div className="mt-8 flex justify-between items-center">
               <button
                 onClick={handlePrevSection}
                 disabled={currentSection === 0}
-                className="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-lg hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200 ease-in-out disabled:opacity-50"
+                className="bg-indigo-100 text-indigo-800 px-6 py-2 rounded-lg hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200 ease-in-out disabled:opacity-50"
               >
-                Previous Section
+                Previous
               </button>
-              <span className="text-gray-600">
+              <span className="text-indigo-600 font-semibold">
                 Section {currentSection + 1} of {courseSections.length}
               </span>
               <button
                 onClick={handleNextSection}
                 disabled={currentSection === courseSections.length - 1}
-                className="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-lg hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200 ease-in-out disabled:opacity-50"
+                className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-200 ease-in-out disabled:opacity-50"
               >
-                Next Section
+                Next
               </button>
             </div>
           </div>

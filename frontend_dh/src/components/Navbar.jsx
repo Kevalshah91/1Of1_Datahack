@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaHome, FaQuestionCircle, FaBookOpen, FaUserCircle, FaChartBar } from 'react-icons/fa';
+import { FaHome, FaQuestionCircle, FaBookOpen, FaUserCircle, FaChartBar, FaStickyNote, FaLayerGroup } from 'react-icons/fa';
+import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
 import { auth } from '../firebaseConfig'; // Assume this is already set up
 
 const NavLink = ({ to, icon: Icon, children }) => (
@@ -47,7 +48,7 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`sticky top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md py-4 px-6 
         ${isScrolled ? 'shadow-lg' : ''}
-        transition-all duration-300 ease-in-out`}
+        transition-all duration-300 ease-in-out border-b-4 border-purple-600`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Brand */}
@@ -65,11 +66,14 @@ const Navbar = () => {
         </Link>
 
         {/* Links */}
-        <div className="space-x-6 flex items-center">
+        <div className="space-x-4 flex items-center">
           <NavLink to="/" icon={FaHome}>Home</NavLink>
-          {/* <NavLink to="/quiz" icon={FaQuestionCircle}>Quiz</NavLink>
+          <NavLink to="/quiz" icon={FaQuestionCircle}>Quiz</NavLink>
           <NavLink to="/course" icon={FaBookOpen}>Courses</NavLink>
-          <NavLink to="/dashboard" icon={FaChartBar}>Dashboard</NavLink> */}
+          <NavLink to="/canvas" icon={FaLayerGroup}>Canvas</NavLink>
+          <NavLink to="/cards" icon={BsFillCreditCard2FrontFill}>Flash Cards</NavLink>
+          <NavLink to="/sticky" icon={FaStickyNote}>Sticky Notes</NavLink>
+          <NavLink to="/dashboard" icon={FaChartBar}>Dashboard</NavLink>
           {user ? (
             <motion.div 
               whileHover={{ scale: 1.05 }}
