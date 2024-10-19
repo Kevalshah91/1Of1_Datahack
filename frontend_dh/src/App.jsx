@@ -1,8 +1,11 @@
 import React from 'react'
+import CanvasBoard from './components/CanvasBoard'
 
 const App = () => {
   return (
-    <div>App</div>
+    <>
+    <CanvasBoard/>
+    </>
   )
 }
 
