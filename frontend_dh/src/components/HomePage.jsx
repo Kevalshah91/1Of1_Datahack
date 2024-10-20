@@ -146,7 +146,7 @@ const HomePage = () => {
           >
             <h1 className="text-5xl font-extrabold sm:text-6xl md:text-7xl mb-6">
               <span className="block">Master Your Studies</span>
-              <span className="block text-yellow-300">with G5</span>
+              <span className="block text-yellow-300">with 1of1</span>
             </h1>
             <p className="mt-3 max-w-md mx-auto text-xl sm:text-2xl md:mt-5 md:max-w-3xl">
               Transform your study materials into interactive learning

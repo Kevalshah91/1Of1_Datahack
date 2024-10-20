@@ -10,6 +10,8 @@ import Quiz from './components/Quiz';
 import Course from './components/Course';
 import Video from './components/Video';
 import Dashboard from './components/Dashboard';
+import Image from './components/Image';
+// import Diagram from './components/Diagram';
 
 const App = () => {
   const location = useLocation(); // Get the current location
@@ -31,6 +33,10 @@ const App = () => {
         <Route path="/quiz" element={<Quiz/>} />
         <Route path="/video" element={<Video/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
+        {/* <Route path="/diagram" element={<Diagram/>} /> */}
+        <Route path="/image" element={<Image/>} />
+
+
 
 
 

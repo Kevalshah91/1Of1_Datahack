@@ -61,7 +61,7 @@ const Navbar = () => {
             <FaBookOpen className="text-white text-xl" />
           </motion.div>
           <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-            G5
+            1of1
           </span>
         </Link>
 

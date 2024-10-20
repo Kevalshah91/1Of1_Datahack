@@ -1,14 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { saveAs } from 'file-saver';
-import { FaPencilAlt, FaEraser, FaTrash, FaDownload, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-
-const questions = [
-  "Draw a house",
-  "Sketch a car",
-  "Illustrate a tree",
-  "Design a logo",
-  "Create a landscape"
-];
+import axios from 'axios';
 
 const CanvasBoard = () => {
   const canvasRef = useRef(null);
@@ -17,8 +8,10 @@ const CanvasBoard = () => {
   const [color, setColor] = useState('#000000');
   const [brushWidth, setBrushWidth] = useState(5);
   const [eraserWidth, setEraserWidth] = useState(20);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isEraser, setIsEraser] = useState(false);
+  const [question, setQuestion] = useState('');
+  const [analysisResult, setAnalysisResult] = useState(null);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -67,56 +60,51 @@ const CanvasBoard = () => {
     if (contextRef.current && canvas) {
       contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
     }
-  };
-
-  const downloadCanvas = () => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      canvas.toBlob((blob) => {
-        saveAs(blob, `drawing-${currentQuestionIndex + 1}.png`);
-      });
-    }
-  };
-
-  const handleNext = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      clearCanvas();
-    }
-  };
-
-  const handlePrevious = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      clearCanvas();
-    }
+    setAnalysisResult(null);
   };
 
   const toggleEraser = () => {
     setIsEraser(!isEraser);
   };
 
+  const analyzeDrawing = async () => {
+    if (!canvasRef.current || !question) return;
+
+    setIsAnalyzing(true);
+    try {
+      // Convert canvas to blob
+      const blob = await new Promise(resolve => canvasRef.current.toBlob(resolve, 'image/png'));
+      
+      // Create FormData and append blob and prompt
+      const formData = new FormData();
+      formData.append('image', blob, 'drawing.png');
+      formData.append('prompt', question);
+
+      // Send request to backend
+      const response = await axios.post('http://localhost:5030/analyze', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+
+      setAnalysisResult(response.data);
+    } catch (error) {
+      console.error('Error analyzing drawing:', error);
+      setAnalysisResult({ error: 'Failed to analyze drawing' });
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
   return (
-    <div className="p-4 bg-gray-100  flex flex-col items-center justify-center">
-      <div className="bg-white p-2  shadow-lg rounded-lg  border border-gray-300">
-        {/* <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Canvas Drawing Board</h1>  */}
-        
-        <div className="flex justify-between items-center mb-4">
-          <button
-            onClick={handlePrevious}
-            disabled={currentQuestionIndex === 0}
-            className="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 disabled:bg-purple-300 disabled:cursor-not-allowed flex items-center"
-          >
-            <FaChevronLeft className="mr-2" /> Previous
-          </button>
-          <h2 className="text-xl font-semibold text-gray-800">{questions[currentQuestionIndex]}</h2>
-          <button
-            onClick={handleNext}
-            disabled={currentQuestionIndex === questions.length - 1}
-            className="px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 disabled:bg-purple-300 disabled:cursor-not-allowed flex items-center"
-          >
-            Next <FaChevronRight className="ml-2" />
-          </button>
+    <div className="p-4 bg-gray-100 flex flex-col items-center justify-center">
+      <div className="bg-white p-2 shadow-lg rounded-lg border border-gray-300">
+        <div className="mb-4">
+          <input
+            type="text"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder="Enter your drawing prompt"
+            className="w-full px-3 py-2 border rounded-md"
+          />
         </div>
 
         <div className="border-4 border-purple-600 rounded-lg overflow-hidden shadow-inner">
@@ -157,9 +145,8 @@ const CanvasBoard = () => {
 
             <button
               onClick={toggleEraser}
-              className={`px-4 py-2 ${isEraser ? 'bg-purple-400' : 'bg-purple-600'} text-white rounded-full hover:bg-purple-700 flex items-center`}
+              className={`px-4 py-2 ${isEraser ? 'bg-purple-400' : 'bg-purple-600'} text-white rounded-full hover:bg-purple-700`}
             >
-              {isEraser ? <FaEraser className="mr-2" /> : <FaPencilAlt className="mr-2" />}
               {isEraser ? 'Eraser' : 'Brush'}
             </button>
           </div>
@@ -167,18 +154,27 @@ const CanvasBoard = () => {
           <div className="flex space-x-4">
             <button
               onClick={clearCanvas}
-              className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 flex items-center"
+              className="px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700"
             >
-              <FaTrash className="mr-2" /> Clear
+              Clear
             </button>
             <button
-              onClick={downloadCanvas}
-              className="px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 flex items-center"
+              onClick={analyzeDrawing}
+              disabled={isAnalyzing}
+              className={`px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 ${isAnalyzing ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
-              <FaDownload className="mr-2" /> Download
+              {isAnalyzing ? 'Analyzing...' : 'Analyze'}
             </button>
           </div>
         </div>
+
+        {analysisResult && (
+          <div className="mt-4 p-4 bg-gray-100 rounded-md">
+            <h3 className="text-lg font-semibold mb-2">Analysis Result:</h3>
+            <p>Confidence: {analysisResult.confidence}</p>
+            {analysisResult.error && <p className="text-red-500">{analysisResult.error}</p>}
+          </div>
+        )}
       </div>
     </div>
   );
