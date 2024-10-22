@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaHome, FaQuestionCircle, FaBookOpen, FaUserCircle, FaChartBar, FaStickyNote, FaLayerGroup } from 'react-icons/fa';
+import { FaHome, FaQuestionCircle, FaBookOpen, FaUserCircle, FaChartBar, FaStickyNote, FaLayerGroup, FaVideo, FaImage } from 'react-icons/fa';
 import { BsFillCreditCard2FrontFill } from 'react-icons/bs';
 import { auth } from '../firebaseConfig'; // Assume this is already set up
 
@@ -74,6 +74,11 @@ const Navbar = () => {
           <NavLink to="/cards" icon={BsFillCreditCard2FrontFill}>Flash Cards</NavLink>
           <NavLink to="/sticky" icon={FaStickyNote}>Sticky Notes</NavLink>
           <NavLink to="/dashboard" icon={FaChartBar}>Dashboard</NavLink>
+          <NavLink to="/video" icon={FaVideo}>Video</NavLink>
+          <NavLink to="/image" icon={FaImage}>Image</NavLink>
+
+
+
           {user ? (
             <motion.div 
               whileHover={{ scale: 1.05 }}
