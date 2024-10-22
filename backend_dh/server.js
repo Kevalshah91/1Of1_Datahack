@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Atlas connection
-const MONGODB_URI = 'mongodb+srv://maazsaboowala07:maazsaboowala@g5.chid2.mongodb.net/?retryWrites=true&w=majority&appName=G5';
+const MONGODB_URI = '';
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
