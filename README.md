@@ -34,7 +34,7 @@ The **Home Page** serves as the main hub for the platform, giving users access t
 ### 3. **Quiz Generation**
 The platform features an advanced **Quiz Generation** tool, powered by a Retrieval-Augmented Generation (RAG) system, which creates quizzes based on uploaded documents such as PDFs, PPTs, and notes. The quizzes adapt to the learner’s performance, offering a dynamic learning experience.
 
-![Quiz Generation](images/quiz_doc_upload.jpg)
+![Quiz Generation](images/Quiz_doc_upload.jpg)
 
 ---
 
@@ -76,7 +76,7 @@ The **Sticky Notes** feature allows users to create and manage bite-sized summar
 ### 9. **Diagram Reader (LLaMA + Llava Models)**
 Unlike typical RAG systems that only handle textual data, our platform includes a **Diagram Reader** that leverages the **LLaMA + Llava models** to read and interpret diagrams. This feature provides in-depth explanations of visual data, offering students a unique way to interact with images and diagrams.
 
-![Diagram Reader](images/diagram_buddy.jpg)
+![Diagram Reader](images/Diagram_buddy.jpg)
 
 ---
 
