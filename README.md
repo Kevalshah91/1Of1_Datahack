@@ -9,7 +9,7 @@ Welcome to the **AI-Powered Study Assistant**, a platform designed to revolution
 **Discover the AI-Powered Study Assistant:**
    - Experience personalized learning through our unique features.
    
-   ![Demo Video Thumbnail](images/logo.jpg) 
+   ![Demo Video Thumbnail](images/Screenshot%202024-10-27%20160417.png) 
 
    [Watch the Demo Video on YouTube](https://youtu.be/CbmNO4IuqK8)
 
