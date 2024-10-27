@@ -1,17 +1,17 @@
-# AI-Powered Study Assistant
+# 1of1 AI-Powered Study Assistant
 
-### October 2024
+
 
 Welcome to the **AI-Powered Study Assistant**, a platform designed to revolutionize learning through the use of cutting-edge AI models. This project includes a range of features, such as automated quiz generation, personalized flashcards, and interactive diagram reading, which together create a tailored learning experience.
 
 ## Demo Video
 
-To get a quick overview of the project in action, watch the demo video below:
+**Discover the AI-Powered Study Assistant:**
+   - Experience personalized learning through our unique features.
+   
+   ![Demo Video Thumbnail](images/logo.jpg) 
 
-<video width="600" controls>
-  <source src="1of1.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+   [Watch the Demo Video on YouTube](https://youtu.be/CbmNO4IuqK8)
 
 ---
 
@@ -89,15 +89,4 @@ The **AI-Powered Study Assistant** is built using a variety of cutting-edge tech
 - **Text-to-Speech (TTS)** for AI-generated video lectures.
 - **Caching system** in quiz generation to improve performance and speed by storing previously generated questions.
 
----
 
-## Installation and Usage
-
-### Prerequisites
-- Python 3.x
-- Libraries: TensorFlow, OpenCV, Flask (detailed in `requirements.txt`)
-
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/project-name.git
