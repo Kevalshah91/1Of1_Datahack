@@ -1,77 +1,92 @@
-# AI-Powered Study Assistant
+# 1of1 AI-Powered Study Assistant
 
-This project is an **AI-Powered Study Assistant**, developed to enhance the learning experience by utilizing state-of-the-art AI models to generate personalized and interactive study tools. With features ranging from quiz and flashcard generation to AI-enhanced video lectures and diagram readers, the platform provides an all-in-one solution for modern learning.
+
+
+Welcome to the **AI-Powered Study Assistant**, a platform designed to revolutionize learning through the use of cutting-edge AI models. This project includes a range of features, such as automated quiz generation, personalized flashcards, and interactive diagram reading, which together create a tailored learning experience.
+
+## Demo Video
+
+**Discover the AI-Powered Study Assistant:**
+   - Experience personalized learning through our unique features.
+   
+   ![Demo Video Thumbnail](images/Screenshot%202024-10-27%20160417.png) 
+
+   [Watch the Demo Video on YouTube](https://youtu.be/CbmNO4IuqK8)
+
+---
 
 ## Key Features
 
-### 1. **RAG System for Generating Quizzes, Flashcards, and Question-Answering**
-The platform uses a **Retrieval-Augmented Generation (RAG)** system to:
-- **Generate quizzes**: Automatically creates questions from content in PDFs, PPTs, and notes.
-- **Create flashcards**: Condenses key concepts into smart flashcards.
-- **Answer questions**: Provides AI-generated answers to user queries based on document content.
+### 1. **Login Page**
+The **Login Page** offers a seamless and secure authentication process for users. Once logged in, students and educators can access personalized content tailored to their needs.
 
-![Quiz and Flashcards](https://example.com/path/to/quiz-flashcard-image.png)
+![Login Page](images/login_page.jpg)
 
-<video width="600" controls>
-  <source src="https://example.com/path/to/quiz-flashcard-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+---
 
-### 2. **AI Drawing Feature Using CLIP for Context Matching**
-Utilizing **CLIP** (Contrastive Language-Image Pretraining), the platform allows users to:
-- **Generate drawings**: Match text descriptions with relevant visual representations.
-- **Interactive diagrams**: Automatically visualize and explain complex ideas.
+### 2. **Home Page**
+The **Home Page** serves as the main hub for the platform, giving users access to all the available tools, courses, and study features. It provides an intuitive and user-friendly interface for easy navigation.
 
-![AI Drawing Feature](https://example.com/path/to/ai-drawing-image.png)
+![Home Page](images/Home_page.jpg)
 
-<video width="600" controls>
-  <source src="https://example.com/path/to/ai-drawing-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+---
 
-### 3. **Diagram Reader with LLaMA + Llava Models**
-The **Diagram Reader** leverages **LLaMA** and **Llava** models to:
-- Analyze and interpret diagrams in textbooks and notes.
-- Provide detailed explanations of visual content to enhance understanding.
+### 3. **Quiz Generation**
+The platform features an advanced **Quiz Generation** tool, powered by a Retrieval-Augmented Generation (RAG) system, which creates quizzes based on uploaded documents such as PDFs, PPTs, and notes. The quizzes adapt to the learner’s performance, offering a dynamic learning experience.
 
-![Diagram Reader](https://example.com/path/to/diagram-reader-image.png)
+![Quiz Generation](images/Quiz_doc_upload.jpg)
 
-<video width="600" controls>
-  <source src="https://example.com/path/to/diagram-reader-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+---
 
-### 4. **AI-Generated Short Videos with Text-to-Speech (TTS)**
-Transform written content into **short videos** with **Text-to-Speech (TTS)** integration:
-- **Narrated summaries**: The platform generates short video lectures summarizing key topics.
-- **Interactive learning**: Offers an engaging way to review important concepts.
+### 4. **Dashboard (with SWOT Analysis)**
+The **Dashboard** tracks user progress across quizzes, flashcards, and other study activities. It includes detailed performance analytics and integrates a **SWOT (Strengths, Weaknesses, Opportunities, Threats) Analysis** feature to help users assess their learning strengths and areas of improvement.
 
-![AI-Generated Video](https://example.com/path/to/video-generation-image.png)
+![Dashboard](https://github.com/MaazS07/1Of1_Datahack/blob/main/images/Dashboard.jpg)
 
-<video width="600" controls>
-  <source src="https://example.com/path/to/video-generation-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+---
 
-### 5. **Flashcards with Automated Summaries via Gemini API**
-Using the **Gemini API**, flashcards are generated with **automated summaries**:
-- **Concise content**: Automatically extract and summarize information to create study aids.
-- **Smart learning**: The system adjusts to user performance for personalized study.
+### 5. **Course Generator**
+The **Course Generator** creates comprehensive summaries and personalized learning paths from study materials. It helps streamline the learning process by condensing large volumes of information into manageable summaries.
 
-![Flashcards with Summaries](https://example.com/path/to/flashcards-summary-image.png)
+![Course Generator](images/course_generator.jpg)
 
-<video width="600" controls>
-  <source src="https://example.com/path/to/flashcards-summary-demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+---
 
-## Technical Implementation
+### 6. **Canvas (AI-Generated Videos)**
+The **Canvas** feature allows users to generate **AI-powered video lectures** based on their study material. These videos are equipped with **Text-to-Speech (TTS)** capabilities to enhance the learning experience.
 
-The AI-Powered Study Assistant is built using a combination of cutting-edge AI models and tools:
+![Canvas](images/video_generator.jpg)
 
-- **RAG (Retrieval-Augmented Generation)**: Combines document retrieval with AI-generated content for quizzes and summaries.
-- **CLIP**: A powerful language-vision model used for context-driven drawings and diagrams.
-- **LLaMA + Llava Models**: Applied for advanced diagram reading and visual content interpretation.
-- **Gemini API**: Powers the flashcards' automatic summary generation.
-- **Text-to-Speech (TTS)**: Creates narrated video content to enhance the learning experience.
+---
+
+### 7. **Flashcards**
+The platform automatically generates **flashcards** from uploaded documents using AI-powered summaries. The flashcards adjust in difficulty based on the user’s performance, ensuring a focused and effective study session.
+
+![Flashcards](images/flash_card.jpg)
+
+---
+
+### 8. **Sticky Notes**
+The **Sticky Notes** feature allows users to create and manage bite-sized summaries of key concepts. It helps students keep track of important information in a concise and organized manner.
+
+![Sticky Notes](images/sticky_notes.jpg)
+
+---
+
+### 9. **Diagram Reader (LLaMA + Llava Models)**
+Unlike typical RAG systems that only handle textual data, our platform includes a **Diagram Reader** that leverages the **LLaMA + Llava models** to read and interpret diagrams. This feature provides in-depth explanations of visual data, offering students a unique way to interact with images and diagrams.
+
+![Diagram Reader](images/Diagram_buddy.jpg)
+
+---
+
+## Technical Features
+
+The **AI-Powered Study Assistant** is built using a variety of cutting-edge technologies:
+- **Retrieval-Augmented Generation (RAG)** for quiz and flashcard generation.
+- **LLaMA + Llava Models** for image and diagram interpretation, providing capabilities beyond typical AI study assistants.
+- **Gemini API** for automated flashcard summaries.
+- **Text-to-Speech (TTS)** for AI-generated video lectures.
+- **Caching system** in quiz generation to improve performance and speed by storing previously generated questions.
+
 
