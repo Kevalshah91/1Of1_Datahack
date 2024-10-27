@@ -19,7 +19,7 @@ Welcome to the **AI-Powered Study Assistant**, a platform designed to revolution
 
 Explore our presentation that outlines the features and functionalities of the **AI-Powered Study Assistant**.
 
-[View the Presentation on Canva](https://www.canva.com/design/DAGUEXZ6hJA/g1D9_Qmx4EPZTJ0G0TWpTA/view?utm_content=DAGUEXZ6hJA&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+[View the Presentation](https://www.canva.com/design/DAGUEXZ6hJA/g1D9_Qmx4EPZTJ0G0TWpTA/view?utm_content=DAGUEXZ6hJA&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 ---
 
