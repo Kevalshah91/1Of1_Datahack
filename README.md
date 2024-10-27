@@ -27,7 +27,7 @@ The **Login Page** offers a seamless and secure authentication process for users
 ### 2. **Home Page**
 The **Home Page** serves as the main hub for the platform, giving users access to all the available tools, courses, and study features. It provides an intuitive and user-friendly interface for easy navigation.
 
-![Home Page](images/home_page.jpg)
+![Home Page](images/Home_page.jpg)
 
 ---
 
